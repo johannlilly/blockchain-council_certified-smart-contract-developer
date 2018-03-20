@@ -36,13 +36,13 @@ contract TCoin {
 		name = tokenName;
 	}
 
-	function transfer(address _to, uint256, _value) public {
+	function transfer(address _to, uint256 _value) public {
 		require(balanceOf[msg.sender] > _value);
 		require(balanceOf[_to] + _value > balanceOf[_to]);
 		// if(admin)
 		balanceOf[msg.sender] -= _value;
 		balanceOf[_to] += _value;
-		return true;
+		Transfer(msg.sender, _to, _value);
 	}
 
 	function approve(address _spender, uint256 _value) public returns (bool success) {
